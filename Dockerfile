@@ -26,5 +26,6 @@ RUN ccache -M 50G
 
 WORKDIR /code
 USER docker:docker
-ENTRYPOINT ["fixuid", "/bin/bash"]
+ENTRYPOINT ["fixuid"]
+CMD ["/bin/bash"]
 # usage: docker run --rm -it -u <uid>:<gid> <image name> sh

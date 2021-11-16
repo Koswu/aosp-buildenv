@@ -19,10 +19,9 @@ RUN USER=docker && \
     mkdir -p /etc/fixuid && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
 
-ENV CCACHE_DIR /cache
-ENV CCACHE_EXEC /usr/bin/ccache
-ENV USE_CCACHE 1
-RUN ccache -M 50G
+# default cache size is 50G
+ENV CCACHE_DIR=/cache CCACHE_EXEC=/usr/bin/ccache USE_CCACHE=1 CACHE_SIZE=50G 
+RUN ccache -M $CACHE_SIZE
 
 
 WORKDIR /code

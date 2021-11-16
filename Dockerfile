@@ -19,7 +19,8 @@ RUN USER=docker && \
     mkdir -p /etc/fixuid && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
 
-ENV CCACHE_DIR /cache/
+ENV CCACHE_DIR /cache
+ENV CCACHE_EXEC /usr/bin/ccache
 ENV USE_CCACHE 1
 RUN ccache -M 50G
 

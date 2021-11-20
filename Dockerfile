@@ -19,6 +19,10 @@ RUN USER=docker && \
     mkdir -p /etc/fixuid && \
     printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
 
+# update repo
+RUN curl https://storage.googleapis.com/git-repo-downloads/repo -o ./repo && \
+    mv ./repo /usr/bin/repo && chmod 755 /usr/bin/repo
+
 # default cache size is 50G
 ENV CCACHE_DIR=/cache CCACHE_EXEC=/usr/bin/ccache USE_CCACHE=0 CACHE_SIZE=50G 
 

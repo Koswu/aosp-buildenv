@@ -25,6 +25,6 @@ ENV CCACHE_DIR=/cache CCACHE_EXEC=/usr/bin/ccache USE_CCACHE=0 CACHE_SIZE=50G
 
 WORKDIR /code
 USER docker:docker
-ENTRYPOINT "/usr/bin/ccache -M $CACHE_SIZE"
-#CMD "/bin/bash"
+ENTRYPOINT ["fixuid"]
+CMD "/bin/bash"
 # usage: docker run --rm -it -u <uid>:<gid> <image name> sh

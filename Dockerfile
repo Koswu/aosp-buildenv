@@ -23,6 +23,12 @@ RUN USER=docker && \
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo -o ./repo && \
     mv ./repo /usr/bin/repo && chmod 755 /usr/bin/repo
 
+# set code and cache permission
+RUN chmod 777 /code && chmod 777 /cache
+
+# update rclone
+RUN curl https://rclone.org/install.sh | bash
+
 # default cache size is 50G
 ENV CCACHE_DIR=/cache CCACHE_EXEC=/usr/bin/ccache USE_CCACHE=0 CACHE_SIZE=50G 
 
